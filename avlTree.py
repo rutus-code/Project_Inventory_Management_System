@@ -1,3 +1,7 @@
+#Created Date : 2nd November 2024
+#Created By : Rutu Shah
+# Data Structure Implemented : AVL Tree
+
 class TreeNode:
     def __init__(self, key, product_details):
         self.key = key
