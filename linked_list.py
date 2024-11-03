@@ -1,3 +1,7 @@
+#Created Date : 2nd November 2024
+#Created By : Rutu Shah
+# Data Structure Implemented : Linked List
+
 class ChangeNode:
     def __init__(self, timestamp, product_id, change):
         self.timestamp = timestamp

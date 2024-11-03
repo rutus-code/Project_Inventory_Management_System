@@ -1,3 +1,7 @@
+#Created Date : 2nd November 2024
+#Created By : Rutu Shah
+# Data Structure Implemented : Trie 
+
 class TrieNode:
     def __init__(self):
         self.children = {}

@@ -1,3 +1,7 @@
+#Created Date : 2nd November 2024
+#Created By : Rutu Shah
+# Data Structure Implemented : Hash Table
+
 class InventoryHashTable:
     def __init__(self):
         # Dictionary to store product details by ID
