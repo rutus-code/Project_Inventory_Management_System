@@ -1,0 +1,23 @@
+{% extends 'layouts.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <h3>Menu</h3>
+        <ul>
+            <li><a href="{{ url_for('configuration') }}">Configuration</a></li>
+            <li><a href="{{ url_for('customers') }}">Customers</a></li>
+            <li><a href="{{ url_for('inventory') }}">Inventory</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <h2>Home Page</h2>
+        <p>Welcome back, {{ username }}!</p>
+    </div>
+</div>
+{% endblock %}

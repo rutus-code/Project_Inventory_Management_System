@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addProduct</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% extends 'layouts.html' %}
+
+{% block title %}Add Products{% endblock %}
+<div class="main-content">
+    <h2>Add Product</h2>
+    <form action="{{ url_for('addProduct') }}" method="post" class="product-form">
+        <div class="form-row">
+            <label for="sku">SKU:</label>
+            <input type="text" id="sku" name="sku" required>
+        </div>
+        <div class="form-row">
+            <label for="sku_description">SKU Description:</label>
+            <input type="text" id="sku_description" name="sku_description" required>
+        </div>
+        <div class="form-row">
+            <label for="make">Make:</label>
+            <input type="text" id="make" name="make" required>
+        </div>
+        <div class="form-row">
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" required>
+        </div>
+        <div class="form-row">
+            <label for="memory">Memory:</label>
+            <input type="text" id="memory" name="memory" required>
+        </div>
+        <div class="form-row">
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" required>
+        </div>
+        <div class="form-actions">
+            <input type="submit" value="Add Product">
+        </div>
+    </form>
+</div>
+
+
+{% block content %}
+
+
+
+
+{% endblock %}
+</body>
+</html>
+
+    

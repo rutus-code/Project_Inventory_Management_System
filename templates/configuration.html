@@ -1,0 +1,19 @@
+{% extends 'layouts.html' %}
+
+{% block title %}Configuration{% endblock %}
+
+{% block content %}
+
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <h2>Configuration Page</h2>
+        <p>Welcome back, {{ username }}!</p>
+
+        <ul>
+            <li><a href="{{ url_for('addProduct') }}">Add Products</a></li>
+            <li><a href="{{ url_for('addCategory') }}">Add Categories</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
