@@ -29,25 +29,39 @@ Core Operations:
 6. Testing: Includes unit tests to verify the correctness of key operations.
 
 ## Technologies Used
-** Backend: Python 3.x
-** Data Structure: Hash Map (Python Dictionary)
-** Testing: Python unittest framework
+* Backend: Python 3.x
+* Data Structure: Hash Map (Python Dictionary)
+* Testing: Python unittest framework
 
 ## Prerequisites
-** Python 3.x installed
+* Python 3.x installed
 
 ## Setup and execution
 
-** 1. Git clone the repository
+ 1. Git clone the repository
 ```
 git clone https://github.com/rutus-code/Project_Inventory_Management_System
 cd Project_Inventory_Management_System
 ```
-** 2. Execute HaspMapForInventory.py file
+ 2. Execute HaspMapForInventory.py file
 ```
 python3 HaspMapForInventory.py 
 ```
-** 3. For unittest execute unitTestForInventoryManagement.py 
+ 3. For unittest execute unitTestForInventoryManagement.py 
 ```
 python3 unitTestForInventoryManagement.py 
 ```
+
+## How It Works
+* The system uses a hash map to store inventory items. Each item is represented by an InventoryItem object, stored with a unique item_id as the key. Key operations include:
+
+1. Add Item: Adds a new inventory item to the hash map.
+2. Search Item: Finds an item by its item_id.
+3. Delete Item: Removes an item by its item_id.
+4. List Items: Displays all items sorted by their names.
+
+## Future Enhancements
+1. Extend the hash map to handle complex queries.
+2. Integrate a database for persistent storage.
+3. Add user authentication and role-based access control.
+4. Introducing the web interface for IMS to enhance user experience.
