@@ -1,0 +1,5 @@
+Flask
+flask-mysqldb
+pytest
+pytest-flask
+pytest-mock
