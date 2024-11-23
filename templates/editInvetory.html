@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% extends 'layouts.html' %}
+
+    {% block title %}Add Inventory{% endblock %}
+
+    {% block content %}
+    <div class="main-content">
+        <h2>Add Inventory</h2>
+
+        {% if msg %}
+        <p style="color: green;">{{ msg }}</p>
+    {% endif %}
+
+
+        <form action="{{ url_for('addInventory') }}" method="post" class="inventory-form">
+
+            <div class="form-row">
+                <label for="product">Select Product:</label>
+                <select name="product" id="product">
+                    {% if products %}
+                        {% for product in products %}
+                             <option value="{{ product['product_id'] }}">{{ product['sku_description'] }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option value="noProduct">No Product Present</option>
+                    {% endif %}
+                </select>                
+            </div>
+
+            
+            <div class="form-row">
+                <label for="inventory_name">Inventory Name:</label>
+                <input type="text" id="inventory_name" name="inventory_name" >
+            </div>
+
+            <div class="form-row">
+                <label for="quantity">Quantity:</label>
+                <input type="text" id="quantity" name="quantity" >
+            </div>
+            
+            <div class="form-row">
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" >
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Add Inventory">
+            </div>
+        </form>
+
+         <!-- Link to view inventory -->
+         <div class="view-inventory">
+            <a href="{{ url_for('viewInventory') }}">View Inventory</a>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+</html>

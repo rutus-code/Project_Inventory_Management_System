@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Category</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='javascripts.js') }}"></script>
+</head>
+<body>
+    {% extends 'layouts.html' %}
+    {% block title %}View Category{% endblock %}
+
+    {% block content %}
+    <div class="table-container">
+        <h2>Category List</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+        <div class="alert-container">
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+            {% endif %}
+        {% endwith %}
+
+
+        <!-- Back Button -->
+        <input type="button" value="Back" class="btnBack" onclick="redirectToAddCategories()">
+        
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for category..." onkeyup="searchTable()">
+        </div>
+
+        {% if categories %}
+        <table id = 'searchTable'>
+            <thead>
+                <tr>
+                    <th>Category ID</th>
+                    <th>Category Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{ category['category_name'] }}</td>
+                    <td><a href="{{ url_for('editCategory',cat_id=category['cat_id'])}}"> <i class="fa fa-edit" style="color: blue;"></i> </a></td>
+                    <td><a href="{{ url_for('deleteCategory', cat_id=category['cat_id']) }}">
+                        <i class="fa fa-trash" style="color: Red;"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No categories found!</p>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+</html>

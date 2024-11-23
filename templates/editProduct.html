@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% extends 'layouts.html' %}
+
+    {% block title %}Add Products{% endblock %}
+
+    {% block content %}
+    <div class="main-content">
+        <h2>Add Product</h2>
+
+        {% if msg %}
+        <p style="color: green;">{{ msg }}</p>
+    {% endif %}
+
+
+        <form action="{{ url_for('editProduct', product_id=product['product_id']) }}" method="post" class="product-form">
+            <div class="form-row">
+                <label for="sku">SKU:</label>
+                <input type="text" id="sku" name="sku" value="{{ product['sku'] }}" >
+            </div>
+            <div class="form-row">
+                <label for="sku_description">SKU Description:</label>
+                <input type="text" id="sku_description" name="sku_description" value="{{ product['sku_description'] }}" >
+            </div>
+            <div class="form-row">
+                <label for="make">Make:</label>
+                <input type="text" id="make" name="make" value="{{ product['make'] }}">
+            </div>
+            <div class="form-row">
+                <label for="model">Model:</label>
+                <input type="text" id="model" name="model" value="{{ product['model'] }}">
+            </div>
+            <div class="form-row">
+                <label for="memory">Memory:</label>
+                <input type="text" id="memory" name="memory" value="{{ product['memory'] }}" >
+            </div>
+            <div class="form-row">
+                <label for="color">Color:</label>
+                <input type="text" id="color" name="color" value="{{ product['color'] }}" >
+            </div>
+            
+            <div class="form-actions">
+                <input type="submit" value="Update Products">
+            </div>
+        </form>
+        
+    </div>
+    {% endblock content %}
+</body>
+</html>

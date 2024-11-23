@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='javascripts.js') }}"></script>
+</head>
+<body>
+    {% extends 'layouts.html' %}
+    {% block title %}View Inventory{% endblock %}
+
+    {% block content %}
+    <div class="table-container">
+        <h2>List of available inventory</h2>
+
+       
+      
+
+
+        <!-- Back Button -->
+        <input type="button" value="Back" class="btnBack" onclick="redirectToAddInventory()">
+        
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for available inventory.." onkeyup="searchTable()">
+        </div>
+        
+        {% if inventories %}
+        <table id = 'searchTable'>
+            <thead>
+                <tr>
+                    <th>Inventory Sr</th>
+                    <th>Inventory Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Product Name</th>
+                    <th>Category Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inventory in inventories %}
+                <tr>
+                    <td>{{ loop.index  }}</td>
+                    <td>{{ inventory['inventory_item_description'] }}</td>
+                    <td>{{ inventory['quantity'] }}</td>
+                    <td>{{ inventory['price'] }}</td>
+                    <td>{{ inventory['sku_description'] }}</td>
+                    <td>{{ inventory['category_name'] }}</td>
+                    <td> <i class="fa fa-edit" style="color: blue;"></i> </td>
+                    <td><a href="{{ url_for('deleteInventory', inventory_id=inventory['inventory_id']) }}"> <i class="fa fa-trash" style="color: red;"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No categories found!</p>
+        {% endif %}
+    </div>
+    {% endblock content %}
+</body>
+</html>

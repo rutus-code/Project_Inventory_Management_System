@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='javascripts.js') }}"></script>
+</head>
+<body>
+    {% extends 'layouts.html' %}
+    {% block title %}View Products{% endblock %}
+
+    {% block content %}
+    <div class="table-container">
+        <h2>List of Available Products</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert-container">
+            {% for product, message in messages %}
+                <div class="alert {{ product }}">{{ message }}</div>
+            {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Back Button -->
+        <input type="button" value="Back" class="btnBack" onclick="redirectToAddProducts()">
+        
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="searchTable()">
+        </div>
+
+        {% if products %}
+        <table id="searchTable">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>sku</th>
+                    <th>Product Name</th>
+                    <th>Product Make</th>
+                    <th>Product Model</th>
+                    <th>Product Memory</th>
+                    <th>Product Color</th>
+                    <th>Product Category</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ product['sku'] }}</td>
+                    <td>{{ product['sku_description'] }}</td>
+                    <td>{{ product['make'] }}</td>
+                    <td>{{ product['model'] }}</td>
+                    <td>{{ product['memory'] }}</td>
+                    <td>{{ product['color'] }}</td>
+                    <td>{{ product['category_name'] }}</td>
+                    <td><a href="{{ url_for('editProduct', product_id=product['product_id']) }}"> <i class="fa fa-edit" style="color: blue;"></i> </a></td>
+                    <td><a href="{{ url_for('deleteProduct', product_id=product['product_id']) }}"> <i class="fa fa-trash" style="color: red;"></i></a></td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No categories found!</p>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+
+</html>
