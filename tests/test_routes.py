@@ -38,23 +38,6 @@ def client(mocker):
         yield client, mock_cursor
 
 @pytest.fixture
-def client(mocker):
-    app.config['TESTING'] = True
-
-    # Mock MySQL connection
-    mock_cursor = MagicMock()
-    mock_connection = MagicMock()
-    mock_connection.cursor.return_value = mock_cursor
-    mock_connection.close.return_value = None  # Handle teardown
-    mocker.patch.object(mysql, 'connection', mock_connection)
-
-    with app.test_client() as client:
-        yield client, mock_cursor
-
-
-
-
-@pytest.fixture
 def client():
     app.config['TESTING'] = True
     app.config['MYSQL_HOST'] = 'localhost'
@@ -115,7 +98,7 @@ def test_register_validation(client):
 
 #SQL query efficiency and correctness
 def test_database_query(client, mocker):
-    client, mock_cursor = client  
+    client, mock_cursor = client  # Unpack the fixture
 
     # Mock the query result with proper structure
     mock_cursor.fetchall.return_value = [{'cat_id': 1, 'category_name': 'Electronics'}]
